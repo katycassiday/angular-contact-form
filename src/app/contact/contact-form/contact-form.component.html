@@ -1,0 +1,30 @@
+
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate #form="ngForm">
+  <div class="mb-3" [ngClass]="email?.touched ? 'was-validated' : 'needs-validated'">
+    <label for="email" class="required form-label">Email address</label>
+    <input type="email" formControlName="email" class="form-control" id="email" required />
+   
+    
+  </div>
+  <div class="col-auto ">
+    <label for="reason">Please select a reason for contact</label>
+     <select multiple class="form-control " id="reason">
+       <option>Account & Billing</option>
+       <option>Technical Support</option>
+       <option>Rewards Program</option>
+       <option>Other</option>
+     </select>
+   </div>
+ 
+    <div class="col-auto ">
+     <label for="description">Description</label>
+       <textarea class="form-control " id="descrption" rows="3"></textarea>
+   </div>
+ 
+  <div class="col-auto">
+   <button type="submit" class="btn btn-primary col-3 " [disabled]="contactForm.invalid">Submit</button>
+     </div>
+  
+ 
+  
+</form>
