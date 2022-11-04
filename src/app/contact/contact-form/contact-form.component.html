@@ -1,14 +1,23 @@
 
-<form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate #form="ngForm">
-  <div class="mb-3" [ngClass]="email?.touched ? 'was-validated' : 'needs-validated'">
+<div class="col-3 m-4">
+  <form [formGroup]="contactForm"  novalidate #form="ngForm">
+  <div class="col-auto mt-1" [ngClass]="email?.touched ? 'was-validated' : 'needs-validated'">
     <label for="email" class="required form-label">Email address</label>
     <input type="email" formControlName="email" class="form-control" id="email" required />
-   
+    <div *ngIf="email?.errors?.['required']" class="invalid-feedback">
+      Email is required
+    </div>
+    <div *ngIf="email?.errors?.['email']" class="invalid-feedback">
+      Please enter a correct email format
+    </div>
     
   </div>
-  <div class="col-auto ">
+  <div class="col-auto mt-2 "[ngClass]="reason?.touched ? 'was-validated' : 'needs-validated'" >
     <label for="reason">Please select a reason for contact</label>
-     <select multiple class="form-control " id="reason">
+     <select class="form-control " id="reason" formControlName="reason" required>
+      <div *ngIf="reason?.errors?.['required']" class="invalid-feedback" >
+        
+      </div>
        <option>Account & Billing</option>
        <option>Technical Support</option>
        <option>Rewards Program</option>
@@ -16,15 +25,17 @@
      </select>
    </div>
  
-    <div class="col-auto ">
+    <div class="col-12 mt-1 "[ngClass]="description?.touched ? 'was-validated' : 'needs-validated'" >
      <label for="description">Description</label>
-       <textarea class="form-control " id="descrption" rows="3"></textarea>
-   </div>
+       <textarea class="form-control " formControlName="description"  id="description" required rows="3"></textarea>
+       <div *ngIf="description?.errors?.['required']" class="invalid-feedback">
+      
+      </div>
+  
  
-  <div class="col-auto">
-   <button type="submit" class="btn btn-primary col-3 " [disabled]="contactForm.invalid">Submit</button>
+  <div class="col-auto mt-1 ">
+   <button type="submit" class="btn btn-primary col-3 "  (click)="onSubmit()" [disabled]="contactForm.valid">Submit</button>
      </div>
-  
- 
-  
+    </div>
 </form>
+

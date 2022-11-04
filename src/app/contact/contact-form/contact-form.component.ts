@@ -3,14 +3,17 @@ import {
   Component,
   EventEmitter,
   Output,
+ 
 } from "@angular/core";
 import {
   FormControl,
   FormGroup,
   AbstractControl,
   Validators,
-  MinLengthValidator,
 } from "@angular/forms";
+
+
+
 
 @Component({
   selector: "app-contact-form",
@@ -51,8 +54,10 @@ public contactForm: FormGroup ;
       this.contactForm.value
       );
       this.formSubmit.emit(this.contactForm.value);
-    }
+    };
+    
   }
+  
 
   private _buildForm(): FormGroup {
     return new FormGroup(
@@ -61,5 +66,9 @@ public contactForm: FormGroup ;
       reason: new FormControl("", [Validators.required]),
       descripion: new FormControl("", [Validators.required]),
     });
+
+    
   }
+  
+  
 }

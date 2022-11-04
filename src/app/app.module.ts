@@ -6,16 +6,22 @@ import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
 import { ContactUsComponent } from './contact/contact-form/contact-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     ContactComponent,
     ContactUsComponent,
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
